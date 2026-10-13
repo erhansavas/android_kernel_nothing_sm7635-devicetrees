@@ -25,7 +25,7 @@
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
 
 	chosen: chosen {
-		bootargs = "loglevel=6 kpti=0 log_buf_len=256K swiotlb=noforce loop.max_part=7 pcie_ports=compat irqaffinity=0-3 cpufreq.default_governor=performance kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on kernel.panic_on_rcu_stall=1 fw_devlink.strict=1 service_locator.enable=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-7 no-steal-acc printk.console_no_auto_verbose=1 can.stats_timer=0 ftrace_dump_on_oops firmware_class.path=/vendor/firmware_mnt/image,/vendor/vm-system/oemvm/boot,/vendor/vm-system/trustedvm/boot,/vendor/firmware";
+		bootargs = "loglevel=6 kpti=0 swiotlb=noforce loop.max_part=7 pcie_ports=compat irqaffinity=0-3 cpufreq.default_governor=performance kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on kernel.panic_on_rcu_stall=1 fw_devlink.strict=1 service_locator.enable=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-7 no-steal-acc printk.console_no_auto_verbose=1 can.stats_timer=0 ftrace_dump_on_oops firmware_class.path=/vendor/firmware_mnt/image,/vendor/vm-system/oemvm/boot,/vendor/vm-system/trustedvm/boot,/vendor/firmware";
 		stdout-path = "/soc/qcom,qupv3_0_geni_se@ac0000/qcom,qup_uart@a94000:115200n8";
 	};
 
@@ -2012,6 +2012,7 @@
 		/* skip pbl wa as we have got this fixed in pbl */
 		qcom,bypass-pbl-rst-wa;
 
+
 		status = "disabled";
 
 		qos0 {
@@ -2224,6 +2225,19 @@
 		diag_dload@c8 {
 			compatible = "qcom,msm-imem-diag-dload";
 			reg = <0xc8 0xc8>;
+		};
+
+		/* boot_images/boot/QcomPkg/SocPkg/Milos/Include/Soc_cust.h */
+		/* SHARED_IMEM_UNUSED_SPACE_BASE */
+		restart_info@bf0 {
+			compatible = "nothing,msm-imem-restart_info";
+			reg = <0xbf0 0x64>;
+			info_size = <0x64>;
+		};
+
+		lba_addr@b80 {
+			compatible = "nothing,lba_addr";
+			reg = <0xb80 0x8>;
 		};
 
 		modem_dsm@c98 {
