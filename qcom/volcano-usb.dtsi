@@ -80,6 +80,10 @@
 			snps,dis_u2_susphy_quirk;
 			snps,dis_u3_susphy_quirk;
 			snps,parkmode-disable-ss-quirk;
+//#ifdef NT_EDIT
+			snps,usb2-gadget-lpm-disable;
+			snps,usb2-lpm-disable;
+//#endif /* NT_EDIT */
 			tx-fifo-resize;
 			dr_mode = "otg";
 			maximum-speed = "super-speed";

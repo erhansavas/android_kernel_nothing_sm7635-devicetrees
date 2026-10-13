@@ -854,6 +854,10 @@
 				pins = "gpio36", "gpio37";
 				drive-strength = <2>;
 				bias-disable;
+				//#ifdef NT_EDIT
+				//Nothing/add for optimize bottom current/ARCA-1284
+				output-high;
+				//#endif /* NT_EDIT */
 			};
 		};
 	};
@@ -1380,7 +1384,7 @@
 				pins = "gpio59";
 				drive-strength = <2>;
 				bias-pull-up;
-				qcom,i2c_pull;
+				//qcom,i2c_pull;
 			};
 		};
 
@@ -1394,7 +1398,7 @@
 				pins = "gpio60";
 				drive-strength = <2>;
 				bias-pull-up;
-				qcom,i2c_pull;
+				//qcom,i2c_pull;
 			};
 		};
 
@@ -1408,6 +1412,10 @@
 				pins = "gpio59", "gpio60";
 				drive-strength = <2>;
 				bias-disable;
+				//#ifdef NT_EDIT
+				//Nothing/add for optimize bottom current/ARCA-1284
+				output-high;
+				//#endif /* NT_EDIT */
 			};
 		};
 	};
@@ -1711,7 +1719,10 @@
 			config {
 				pins = "gpio17";
 				drive-strength = <8>;   /* 8 mA */
-				bias-disable;           /* NO PULL */
+				/* # ifdef NT_EDIT */
+				/* NT_EDIT added for BELL-5845: add for audio pop*/
+				bias-pull-down;         /* PULL DOWN */
+				/* endif NT_EDIT */
 				output-high;
 			};
 		};
