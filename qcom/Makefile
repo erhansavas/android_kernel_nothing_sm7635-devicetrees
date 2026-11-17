@@ -775,5 +775,6 @@ sdmsteppeauto-overlays-dtb-$(CONFIG_ARCH_SA6155) += $(SA6155_BOARDS) $(SA6155P_B
 dtb-y += $(sdmsteppeauto-dtb-y)
 
 always-y        := $(dtb-y)
+dts-dirs := audio bt camera data display dsp eSE eva fingerprint graphics mm mm-sys mmrm nfc synx video wlan
 subdir-y        := $(dts-dirs)
 clean-files     := *.dtb *.dtbo
